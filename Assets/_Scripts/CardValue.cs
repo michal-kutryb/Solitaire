@@ -1,5 +1,6 @@
 public enum CardValue
 {
+    Ace,
     Two,
     Three,
     Four,
@@ -11,6 +12,5 @@ public enum CardValue
     Ten,
     Jack,
     Queen,
-    King,
-    Ace
+    King
 }

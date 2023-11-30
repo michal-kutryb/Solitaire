@@ -1,7 +1,7 @@
 public class Card
 {
-    public CardValue Value { get; private set; }
-    public CardSuit Suit { get; private set; }
+    public readonly CardValue Value;
+    public readonly CardSuit Suit;
 
     public Card(CardValue value, CardSuit suit)
     {

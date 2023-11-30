@@ -2,27 +2,49 @@ using UnityEngine;
 
 public class DeckDisplay : MonoBehaviour
 {
+    [SerializeField] private GameObject _cardPrefab;
+    [SerializeField] private Canvas _canvas;
     private Deck _deck;
 
     private void Start()
     {
         _deck = new Deck();
+        _deck.Shuffle();
+        DisplayCards();
     }
 
-    public void ShowCards() //DEBUG to temporary show some cards in deck
+    public void DisplayCards() 
     {
-        for(int i = 0; i < _deck.Cards.Count; i++) 
+        int numCardsOnSlot = 1;
+        foreach (RectTransform child in transform)
         {
-            Debug.Log(_deck.Cards[i].Value.ToString() + " of " + _deck.Cards[i].Suit.ToString());
+            
+            RectTransform beforeParent = InstantiateCard(child, true);
+
+            for (int i=1; i<numCardsOnSlot; i++) 
+            {
+                beforeParent = InstantiateCard(beforeParent, false);
+            }
+            numCardsOnSlot++;
         }
     }
 
-    public void ShuffleDeck() //DEBUG to test deck.Shuffle method
+    public RectTransform InstantiateCard(RectTransform parent, bool isFirst) 
     {
-        _deck.Shuffle();
+        GameObject card = Instantiate(_cardPrefab);
+        card.transform.SetParent(parent.transform, false);
+        card.GetComponent<CardDragDrop>().canvas = _canvas;
+        RectTransform cardRectTransform = card.GetComponent<RectTransform>();
+        if (isFirst) 
+        {
+            cardRectTransform.localPosition = Vector2.zero;
+        }
+        else 
+        {
+            cardRectTransform.localPosition = new Vector2(0, -75);
+        }
 
-        Debug.Log("===================");
-        Debug.Log("Shuffling Completed");
-        Debug.Log("===================");
+        return cardRectTransform;
     }
+
 }

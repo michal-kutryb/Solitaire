@@ -27,4 +27,11 @@ public class Deck
             Cards[randomIndex] = temp;
         }
     }
+
+    public Card Pop() 
+    {
+        Card chosen = Cards[Cards.Count - 1];
+        Cards.RemoveAt(Cards.Count - 1);
+        return chosen;
+    }
 }
