@@ -32,6 +32,7 @@ public class DeckDisplay : MonoBehaviour
     public RectTransform InstantiateCard(RectTransform parent, bool isFirst) 
     {
         GameObject card = Instantiate(_cardPrefab);
+        card.GetComponent<CardDisplay>().SetCard(_deck.Pop());
         card.transform.SetParent(parent.transform, false);
         card.GetComponent<CardDragDrop>().canvas = _canvas;
         RectTransform cardRectTransform = card.GetComponent<RectTransform>();

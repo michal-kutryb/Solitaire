@@ -32,6 +32,7 @@ public class Deck
     {
         Card chosen = Cards[Cards.Count - 1];
         Cards.RemoveAt(Cards.Count - 1);
+
         return chosen;
     }
 }
