@@ -16,6 +16,7 @@ public class CardDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
         _rectTransform = GetComponent<RectTransform>();   
         _canvasGroup = GetComponent<CanvasGroup>();
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
@@ -46,9 +47,29 @@ public class CardDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
         Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
-            eventData.pointerDrag.transform.SetParent(transform);
-            RectTransform droppedCardPosition = eventData.pointerDrag.GetComponent<RectTransform>();
-            droppedCardPosition.localPosition = new Vector2(0, -75);
+            GameObject topCard = GetTopCardOnPile(gameObject);
+            AddCardOnCard(eventData.pointerDrag.gameObject, topCard);
+
+
         }
+    }
+
+    private GameObject GetTopCardOnPile(GameObject card)
+    {
+        Transform resultCard = card.transform;
+
+        while(resultCard.Find("Card(Clone)") != null)
+        {
+            resultCard = resultCard.Find("Card(Clone)");
+        }
+
+        return resultCard.gameObject;
+    }
+
+    public void AddCardOnCard(GameObject droppedCard, GameObject card)
+    {
+        droppedCard.transform.SetParent(card.transform);
+        RectTransform droppedCardPosition = droppedCard.GetComponent<RectTransform>();
+        droppedCardPosition.localPosition = new Vector2(0, -75);
     }
 }

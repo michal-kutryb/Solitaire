@@ -6,20 +6,19 @@ using TMPro;
 
 public class CardDisplay : MonoBehaviour
 {
-    public Card Card { get; private set; }
+    private CardInfo _cardInfo;
+
     [SerializeField] private TextMeshProUGUI _valueText;
     [SerializeField] private TextMeshProUGUI _suitText;
 
-    public void SetCard(Card card)
+    private void Awake()
     {
-        Card = card;
-        UpdateDisplay();
+        _cardInfo = gameObject.GetComponent<CardInfo>();
     }
 
     public void UpdateDisplay() 
     {
-        //SET TEXT
-        _valueText.SetText(Card.Value.ToString());
-        _suitText.SetText(Card.Suit.ToString());
+        _valueText.SetText(_cardInfo.Card.Value.ToString());
+        _suitText.SetText(_cardInfo.Card.Suit.ToString());
     }
 }

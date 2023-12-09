@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390282855782454562, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Name
-      value: Play Slot (5)
+      value: Play Pile (5)
       objectReference: {fileID: 0}
     - target: {fileID: 2390282855782454563, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Pivot.x
@@ -343,7 +343,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390282855782454562, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Name
-      value: Play Slot (4)
+      value: Play Pile (4)
       objectReference: {fileID: 0}
     - target: {fileID: 2390282855782454563, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Pivot.x
@@ -569,7 +569,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390282855782454562, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Name
-      value: Play Slot (2)
+      value: Play Pile (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2390282855782454563, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Pivot.x
@@ -666,7 +666,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390282855782454562, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Name
-      value: Play Slot (1)
+      value: Play Pile (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2390282855782454563, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Pivot.x
@@ -1006,7 +1006,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390282855782454562, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Name
-      value: Play Slot (6)
+      value: Play Pile (6)
       objectReference: {fileID: 0}
     - target: {fileID: 2390282855782454563, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Pivot.x
@@ -1289,7 +1289,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390282855782454562, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Name
-      value: Play Slot
+      value: Play Pile
       objectReference: {fileID: 0}
     - target: {fileID: 2390282855782454563, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Pivot.x
@@ -1449,7 +1449,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2390282855782454562, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Name
-      value: Play Slot (3)
+      value: Play Pile (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2390282855782454563, guid: 2fef7b621a8c15c4aa3fd7278cefdadd, type: 3}
       propertyPath: m_Pivot.x

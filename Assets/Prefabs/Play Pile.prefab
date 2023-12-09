@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2390282855782454565}
   - component: {fileID: 2390282855782454564}
   m_Layer: 5
-  m_Name: Play Slot
+  m_Name: Play Pile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
