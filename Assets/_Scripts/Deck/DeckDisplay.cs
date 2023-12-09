@@ -16,17 +16,18 @@ public class DeckDisplay : MonoBehaviour
 
     public void DisplayCards() 
     {
-        int numCardsOnSlot = 1;
+        int numCardsOnPile = 1;
         foreach (RectTransform child in transform)
         {
             RectTransform playPile = child;
             RectTransform beforeParent = InstantiateCard(child, true);
 
-            for (int i=1; i<numCardsOnSlot; i++) 
+            for (int i=1; i<numCardsOnPile; i++) 
             {
+                beforeParent.GetComponent<CardDisplay>().SetReverseVisibility(true);
                 beforeParent = InstantiateCard(beforeParent, false);
             }
-            numCardsOnSlot++;
+            numCardsOnPile++;
         }
     }
 

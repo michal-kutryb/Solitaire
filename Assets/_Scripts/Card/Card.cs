@@ -8,4 +8,20 @@ public class Card
         Value = value;
         Suit = suit;
     }
+
+    public static bool CompareSuitsByColor(CardSuit suit1, CardSuit suit2)
+    {
+        if (suit1 == CardSuit.Clubs || suit1 == CardSuit.Spades) 
+        {
+            if (suit2 == CardSuit.Clubs || suit2 == CardSuit.Spades)
+                return true;
+        }
+        else 
+        {
+            if (suit2 != CardSuit.Clubs && suit2 != CardSuit.Spades)
+                return true;
+        }
+
+        return false;
+    }
 }
