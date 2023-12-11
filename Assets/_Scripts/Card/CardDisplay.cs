@@ -22,6 +22,12 @@ public class CardDisplay : MonoBehaviour
     {
         _valueText.SetText(_cardInfo.Card.Value.ToString());
         _suitText.SetText(_cardInfo.Card.Suit.ToString());
+
+        if(_cardInfo.Card.Suit.Equals(CardSuit.Hearts) || _cardInfo.Card.Suit.Equals(CardSuit.Diamonds)) 
+        {
+            _valueText.color = Color.red;
+            _suitText.color = Color.red;
+        }
     }
 
     public void SetReverseVisibility(bool value) 
