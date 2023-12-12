@@ -4,6 +4,7 @@ public class DeckDisplay : MonoBehaviour
 {
     [SerializeField] private GameObject _cardPrefab;
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private GameObject _drawPile;
 
     private Deck _deck;
 
@@ -29,14 +30,20 @@ public class DeckDisplay : MonoBehaviour
             }
             numCardsOnPile++;
         }
+        
+        while(_deck.Cards.Count > 0)
+        {
+            RectTransform card = InstantiateCard(_drawPile.transform, true);
+            card.GetComponent<CardDisplay>().SetReverseVisibility(true);
+        }
     }
 
-    public RectTransform InstantiateCard(RectTransform parent, bool isFirst)
+    public RectTransform InstantiateCard(Transform parent, bool isFirst)
     {
         GameObject card = Instantiate(_cardPrefab);
 
         card.GetComponent<CardInfo>().SetCard(_deck.Pop());
-        card.transform.SetParent(parent.transform, false);
+        card.transform.SetParent(parent, false);
         card.GetComponent<CardDragDrop>().canvas = _canvas;
 
         RectTransform cardRectTransform = card.GetComponent<RectTransform>();

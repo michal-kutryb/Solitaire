@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class CardDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     public Canvas canvas;
 
@@ -54,11 +54,6 @@ public class CardDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
             else
                 AddCardOnPile(gameObject, ParentBeforeDrop.gameObject);
         }
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerDown");
     }
 
     public void OnDrop(PointerEventData eventData)

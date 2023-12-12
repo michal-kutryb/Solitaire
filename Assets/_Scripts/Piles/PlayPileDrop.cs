@@ -7,11 +7,6 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        if(transform.childCount != 0)
-        {
-            return;
-        }
-
         Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {

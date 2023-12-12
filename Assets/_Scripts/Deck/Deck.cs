@@ -30,6 +30,10 @@ public class Deck
 
     public Card Pop() 
     {
+        if(Cards.Count == 0) 
+        {
+            return null;
+        }
         Card chosen = Cards[Cards.Count - 1];
         Cards.RemoveAt(Cards.Count - 1);
 
