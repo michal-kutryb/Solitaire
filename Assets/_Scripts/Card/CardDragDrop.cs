@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class CardDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public Canvas canvas;
 
@@ -49,73 +49,10 @@ public class CardDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         _canvasGroup.blocksRaycasts = true;
         if (!isDropSucces)
         {
-            if (ParentBeforeDrop.childCount != 0)
-                AddCardOnCard(gameObject, ParentBeforeDrop.gameObject);
+            if (ParentBeforeDrop.name == "Card(Clone)")
+                PlayPileDrop.AddCardOnCard(gameObject, ParentBeforeDrop.gameObject);
             else
-                AddCardOnPile(gameObject, ParentBeforeDrop.gameObject);
+                PlayPileDrop.AddCardOnPile(gameObject, ParentBeforeDrop.gameObject);
         }
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        Debug.Log("OnDrop");
-        if (eventData.pointerDrag != null)
-        {
-            CardInfo droppedCardInfo = eventData.pointerDrag.GetComponent<CardInfo>();
-            GameObject topCard = GetTopCardOnPile(gameObject);
-            CardInfo topCardInfo = topCard.GetComponent<CardInfo>();
-
-            if (!CheckIfPossibleToDropOnCard(droppedCardInfo.Card, topCardInfo.Card))
-                return;
-
-            CardDragDrop droppedCardDragDrop = eventData.pointerDrag.GetComponent<CardDragDrop>();
-            Transform reverseOfParentBeforeDrop = droppedCardDragDrop.ParentBeforeDrop.Find("Reverse");
-            if(reverseOfParentBeforeDrop != null)
-            {
-                reverseOfParentBeforeDrop.gameObject.SetActive(false);
-            }
-            
-            AddCardOnCard(eventData.pointerDrag.gameObject, topCard);
-            droppedCardDragDrop.isDropSucces = true;
-            
-        }
-    }
-
-    private GameObject GetTopCardOnPile(GameObject card)
-    {
-        Transform resultCard = card.transform;
-
-        while(resultCard.Find("Card(Clone)") != null)
-        {
-            resultCard = resultCard.Find("Card(Clone)");
-        }
-
-        return resultCard.gameObject;
-    }
-
-    public void AddCardOnCard(GameObject droppedCard, GameObject card)
-    {
-        droppedCard.transform.SetParent(card.transform);
-        RectTransform droppedCardPosition = droppedCard.GetComponent<RectTransform>();
-        droppedCardPosition.localPosition = new Vector2(0, -75);
-    }
-
-    public bool CheckIfPossibleToDropOnCard(Card droppedCard, Card card)
-    {
-        if (droppedCard.Value.ToString() == "King")
-            return false;
-        if (Card.CompareSuitsByColor(droppedCard.Suit, card.Suit))
-            return false;
-        if (!((int)droppedCard.Value + 1 == (int)card.Value))
-            return false;
-
-        return true;
-    }
-
-    public static void AddCardOnPile(GameObject droppedCard, GameObject pile)
-    {
-        droppedCard.transform.SetParent(pile.transform);
-        droppedCard.GetComponent<RectTransform>().localPosition = Vector2.zero;
-        droppedCard.GetComponent<CardDragDrop>().isDropSucces = true;
     }
 }

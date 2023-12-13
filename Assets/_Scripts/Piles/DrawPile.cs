@@ -12,7 +12,7 @@ public class DrawPile : MonoBehaviour, IPointerDownHandler
         if(transform.childCount > 1)
         {
             Transform cardTransform = transform.GetChild(transform.childCount - 1);
-            CardDragDrop.AddCardOnPile(cardTransform.gameObject, _drawedPile);
+            PlayPileDrop.AddCardOnPile(cardTransform.gameObject, _drawedPile);
             cardTransform.GetComponent<CardDisplay>().SetReverseVisibility(false);
         }
         else
@@ -26,7 +26,7 @@ public class DrawPile : MonoBehaviour, IPointerDownHandler
         while(_drawedPile.transform.childCount > 0)
         {
             Transform childCard = _drawedPile.transform.GetChild(_drawedPile.transform.childCount - 1);
-            CardDragDrop.AddCardOnPile(childCard.gameObject, gameObject);
+            PlayPileDrop.AddCardOnPile(childCard.gameObject, gameObject);
             childCard.gameObject.GetComponent<CardDisplay>().SetReverseVisibility(true);
         }
     }
