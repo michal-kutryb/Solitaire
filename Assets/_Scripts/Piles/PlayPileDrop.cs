@@ -8,21 +8,21 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop");
-        if(eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null)
         {
             GameObject droppedCard = eventData.pointerDrag.gameObject;
             CardDragDrop droppedCardDragDrop = droppedCard.GetComponent<CardDragDrop>();
             Transform reverseOfParentBeforeDrop = droppedCardDragDrop.ParentBeforeDrop.Find("Reverse");
 
-            if(transform.childCount == 0)
+            if (transform.childCount == 0)
             {
                 if (!droppedCard.GetComponent<CardInfo>().Card.Value.Equals(CardValue.King))
                 {
                     return;
                 }
 
-                AddCardOnPile(droppedCard,gameObject);
-                
+                AddCardOnPile(droppedCard, gameObject);
+
             }
             else
             {
@@ -42,6 +42,11 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
             }
 
             droppedCardDragDrop.isDropSucces = true;
+
+            if (droppedCardDragDrop.ParentBeforeDrop.name.Contains("Finish"))
+            {
+                droppedCardDragDrop.ParentBeforeDrop.GetComponent<FinishPileDrop>().pileSize--;
+            }
         }
     }
 
