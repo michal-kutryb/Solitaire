@@ -27,6 +27,11 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
             else
             {
                 GameObject topCard = GetTopCardOnPile(gameObject);
+                if (IsCardReversed(topCard))
+                {
+                    return;
+                }
+
                 CardInfo topCardInfo = topCard.GetComponent<CardInfo>();
                 CardInfo droppedCardInfo = eventData.pointerDrag.GetComponent<CardInfo>();
                 if (!CheckIfPossibleToDropOnCard(droppedCardInfo.Card, topCardInfo.Card))
@@ -85,5 +90,11 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
     {
         droppedCard.transform.SetParent(pile.transform);
         droppedCard.GetComponent<RectTransform>().localPosition = Vector2.zero;
+    }
+
+    private bool IsCardReversed(GameObject Card)
+    {
+        Transform reverse = Card.transform.Find("Reverse");
+        return reverse.gameObject.activeSelf;
     }
 }

@@ -30,4 +30,16 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
         droppedCardDragDrop.isDropSucces = true;
         pileSize++;
     }
+
+    private void Update()
+    {
+        if(pileSize == 13)
+        {
+            GameManager.Instance.finishPilesCompleted[(int)_pileSuit] = true;
+        }
+        else
+        {
+            GameManager.Instance.finishPilesCompleted[(int)_pileSuit] = false;
+        }
+    }
 }
