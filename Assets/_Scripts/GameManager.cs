@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [SerializeField] private GameObject _gameOverPanel;
     public bool[] finishPilesCompleted = { false, false, false, false };
     public bool isGameOver = false;
 
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
         if (CheckIfGameWon())
         {
             isGameOver = true;
-            Debug.Log("YOU WON <3");
+            _gameOverPanel.SetActive(true);
         }
     }
 
@@ -39,7 +40,4 @@ public class GameManager : MonoBehaviour
 
         return true;
     }
-
-
-
 }

@@ -9,10 +9,10 @@ public class Deck
        Cards = new List<Card>();
        for(int i=0; i < 13; i++) 
        {
-            Cards.Add(new Card((CardValue)i, CardSuit.Hearts));
-            Cards.Add(new Card((CardValue)i, CardSuit.Diamonds));
-            Cards.Add(new Card((CardValue)i, CardSuit.Clubs));
-            Cards.Add(new Card((CardValue)i, CardSuit.Spades));
+            for(int j = 0; j < 4; j++)
+            {
+                Cards.Add(new Card((CardValue)i, (CardSuit)j));
+            }
        }
     }
 
