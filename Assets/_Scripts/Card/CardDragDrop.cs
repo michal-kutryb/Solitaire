@@ -36,6 +36,7 @@ public class CardDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         ParentBeforeDrop = transform.parent; 
         transform.SetParent(canvas.transform);
         transform.SetAsLastSibling();
+        GameManager.Instance.isDraggingACard = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -54,5 +55,6 @@ public class CardDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
             else
                 PlayPileDrop.AddCardOnPile(gameObject, ParentBeforeDrop.gameObject);
         }
+        GameManager.Instance.isDraggingACard = false;
     }
 }

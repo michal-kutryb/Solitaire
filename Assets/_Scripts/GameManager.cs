@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _gameOverPanel;
     public bool[] finishPilesCompleted = { false, false, false, false };
     public bool isGameOver = false;
+    public bool isDraggingACard = false;
 
     private void Awake()
     {
