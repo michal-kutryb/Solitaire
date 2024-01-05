@@ -44,7 +44,7 @@ public class DeckDisplay : MonoBehaviour
 
         card.GetComponent<CardInfo>().SetCard(_deck.Pop());
         card.transform.SetParent(parent, false);
-        card.GetComponent<CardDragDrop>().canvas = _canvas;
+        card.GetComponent<CardDrag>().canvas = _canvas;
 
         RectTransform cardRectTransform = card.GetComponent<RectTransform>();
         if (isFirst) 

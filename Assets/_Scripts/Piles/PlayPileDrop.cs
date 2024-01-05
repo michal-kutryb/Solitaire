@@ -11,7 +11,7 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
         if (eventData.pointerDrag != null)
         {
             GameObject droppedCard = eventData.pointerDrag.gameObject;
-            CardDragDrop droppedCardDragDrop = droppedCard.GetComponent<CardDragDrop>();
+            CardDrag droppedCardDragDrop = droppedCard.GetComponent<CardDrag>();
             Transform reverseOfParentBeforeDrop = droppedCardDragDrop.ParentBeforeDrop.Find("Reverse");
 
             if (transform.childCount == 0)

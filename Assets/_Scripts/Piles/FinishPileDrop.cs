@@ -11,7 +11,7 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         GameObject droppedCard = eventData.pointerDrag.gameObject;
-        CardDragDrop droppedCardDragDrop = droppedCard.GetComponent<CardDragDrop>();
+        CardDrag droppedCardDragDrop = droppedCard.GetComponent<CardDrag>();
         CardInfo droppedCardInfo = droppedCard.GetComponent<CardInfo>();
         Transform reverseOfParentBeforeDrop = droppedCardDragDrop.ParentBeforeDrop.Find("Reverse");
 
