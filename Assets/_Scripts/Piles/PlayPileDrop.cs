@@ -92,7 +92,7 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
         droppedCard.GetComponent<RectTransform>().localPosition = Vector2.zero;
     }
 
-    private bool IsCardReversed(GameObject Card)
+    public static bool IsCardReversed(GameObject Card)
     {
         Transform reverse = Card.transform.Find("Reverse");
         return reverse.gameObject.activeSelf;

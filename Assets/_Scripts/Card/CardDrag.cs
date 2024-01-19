@@ -5,24 +5,30 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 {
     public Canvas canvas;
 
-    private GameManager _gameManager;//tu change by³
+    private GameManager _gameManager;
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
 
     [HideInInspector] public bool isDropSucces;
 
     public Transform ParentBeforeDrop { get; private set; }
+    private Transform _draggedCardsBox;
 
     private void Awake()
     {
         _gameManager = GameManager.Instance;
-        _rectTransform = GetComponent<RectTransform>();   
+        _rectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    private void Start()
+    {
+        _draggedCardsBox = canvas.transform.GetChild(6);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (gameObject.GetComponent<CardDisplay>().CardReverse.activeSelf)
+        if (gameObject.GetComponent<CardDisplay>().CardReverse.activeSelf || _draggedCardsBox.childCount != 0)
         {
             eventData.pointerDrag = null;
             return;
@@ -33,7 +39,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         _canvasGroup.blocksRaycasts = false;
 
         ParentBeforeDrop = transform.parent; 
-        transform.SetParent(canvas.transform);
+        transform.SetParent(_draggedCardsBox);
         transform.SetAsLastSibling();
         _gameManager.isDraggingACard = true;
     }

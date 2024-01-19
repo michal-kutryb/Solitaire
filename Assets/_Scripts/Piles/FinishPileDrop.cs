@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class FinishPileDrop : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private CardSuit _pileSuit;
+    [field:SerializeField] public CardSuit PileSuit { get; private set; }
     public int pileSize;
 
     public void OnDrop(PointerEventData eventData)
@@ -15,7 +15,7 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
         CardInfo droppedCardInfo = droppedCard.GetComponent<CardInfo>();
         Transform reverseOfParentBeforeDrop = droppedCardDragDrop.ParentBeforeDrop.Find("Reverse");
 
-        if (!droppedCardInfo.Card.Suit.Equals(_pileSuit) || !((int) droppedCardInfo.Card.Value == pileSize))
+        if (!droppedCardInfo.Card.Suit.Equals(PileSuit) || !((int) droppedCardInfo.Card.Value == pileSize))
         {
             return;
         }
@@ -35,11 +35,11 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
     {
         if(pileSize == 13)
         {
-            GameManager.Instance.finishPilesCompleted[(int)_pileSuit] = true;
+            GameManager.Instance.finishPilesCompleted[(int)PileSuit] = true;
         }
         else
         {
-            GameManager.Instance.finishPilesCompleted[(int)_pileSuit] = false;
+            GameManager.Instance.finishPilesCompleted[(int)PileSuit] = false;
         }
     }
 }
