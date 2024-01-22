@@ -28,13 +28,12 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (gameObject.GetComponent<CardDisplay>().CardReverse.activeSelf || _draggedCardsBox.childCount != 0)
+        if (gameObject.GetComponent<CardDisplay>().CardReverse.activeSelf || _draggedCardsBox.childCount != 0 || GameManager.Instance.isDrawing)
         {
             eventData.pointerDrag = null;
             return;
         }
 
-        Debug.Log("OnBeginDrag");
         isDropSucces = false;
         _canvasGroup.blocksRaycasts = false;
 
@@ -51,7 +50,6 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         _canvasGroup.blocksRaycasts = true;
         if (!isDropSucces)
         {

@@ -7,7 +7,6 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
             GameObject droppedCard = eventData.pointerDrag.gameObject;

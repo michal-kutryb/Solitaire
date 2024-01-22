@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public bool[] finishPilesCompleted = { false, false, false, false };
     public bool isGameOver = false;
     public bool isDraggingACard = false;
+    public bool isDrawing = false;
 
     private void Awake()
     {

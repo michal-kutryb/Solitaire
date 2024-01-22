@@ -2995,6 +2995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawedPile: {fileID: 2054939427}
+  _draggedCardsBox: {fileID: 37740609}
 --- !u!1 &2020100110
 GameObject:
   m_ObjectHideFlags: 0

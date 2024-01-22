@@ -15,7 +15,7 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
         CardInfo droppedCardInfo = droppedCard.GetComponent<CardInfo>();
         Transform reverseOfParentBeforeDrop = droppedCardDragDrop.ParentBeforeDrop.Find("Reverse");
 
-        if (!droppedCardInfo.Card.Suit.Equals(PileSuit) || !((int) droppedCardInfo.Card.Value == pileSize))
+        if (!droppedCardInfo.Card.Suit.Equals(PileSuit) || !((int) droppedCardInfo.Card.Value == pileSize) || droppedCard.transform.childCount > 4)
         {
             return;
         }
