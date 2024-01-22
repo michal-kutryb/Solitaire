@@ -70,7 +70,7 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
     {
         droppedCard.transform.SetParent(card.transform);
         RectTransform droppedCardPosition = droppedCard.GetComponent<RectTransform>();
-        droppedCardPosition.localPosition = new Vector2(0, -75);
+        droppedCardPosition.localPosition = new Vector2(0, -130);
     }
 
     public static bool CheckIfPossibleToDropOnCard(Card droppedCard, Card card)

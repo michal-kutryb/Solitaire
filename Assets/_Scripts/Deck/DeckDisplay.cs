@@ -53,7 +53,7 @@ public class DeckDisplay : MonoBehaviour
         }
         else 
         {
-            cardRectTransform.localPosition = new Vector2(0, -75);
+            cardRectTransform.localPosition = new Vector2(0, -130);
         }
 
         return cardRectTransform;
