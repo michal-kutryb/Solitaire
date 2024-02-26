@@ -24,7 +24,6 @@ public class PlayPileDrop : MonoBehaviour, IDropHandler
                 {
                     return;
                 }
-                if(reverseOfParentBeforeDrop != null && reverseOfParentBeforeDrop.gameObject.activeSelf)
                 AddCardOnPile(droppedCard, gameObject);
                 MovesHistory.Instance.AddMove(droppedCard, droppedCardDragDrop.ParentBeforeDrop.gameObject,isParentReversed);
 
