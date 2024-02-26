@@ -14,6 +14,8 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     public Transform ParentBeforeDrop { get; private set; }
     private Transform _draggedCardsBox;
 
+    private float _lastTimeClick;
+
     private void Awake()
     {
         _gameManager = GameManager.Instance;
@@ -68,9 +70,11 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.clickCount == 2)
+        float currentTimeClick = eventData.clickTime;
+
+        if (Mathf.Abs(currentTimeClick - _lastTimeClick) < 0.75f)
         {
-            if(GameManager.Instance.isDraggingACard || GameManager.Instance.isDrawing || transform.childCount != 4) 
+            if (GameManager.Instance.isDraggingACard || GameManager.Instance.isDrawing || transform.childCount != 4)
             {
                 return;
             }
@@ -80,5 +84,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 GameManager.Instance.GameOver();
             }
         }
+
+        _lastTimeClick = currentTimeClick;
     }
 }
