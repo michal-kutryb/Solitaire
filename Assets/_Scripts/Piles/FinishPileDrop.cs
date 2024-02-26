@@ -14,6 +14,11 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
         CardDrag droppedCardDragDrop = droppedCard.GetComponent<CardDrag>();
         CardInfo droppedCardInfo = droppedCard.GetComponent<CardInfo>();
         Transform reverseOfParentBeforeDrop = droppedCardDragDrop.ParentBeforeDrop.Find("Reverse");
+        bool isParentReversed = false;
+        if (reverseOfParentBeforeDrop != null && reverseOfParentBeforeDrop.gameObject.activeSelf)
+        {
+            isParentReversed = true;
+        }
 
         if (!droppedCardInfo.Card.Suit.Equals(PileSuit) || !((int) droppedCardInfo.Card.Value == pileSize) || droppedCard.transform.childCount > 4)
         {
@@ -21,6 +26,7 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
         }
 
         PlayPileDrop.AddCardOnPile(droppedCard, gameObject);
+        MovesHistory.Instance.AddMove(droppedCard, droppedCardDragDrop.ParentBeforeDrop.gameObject, isParentReversed);
 
         if (reverseOfParentBeforeDrop != null)
         {

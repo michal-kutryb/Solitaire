@@ -23,7 +23,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     private void Start()
     {
-        _draggedCardsBox = canvas.transform.GetChild(6);
+        _draggedCardsBox = canvas.transform.GetChild(7);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

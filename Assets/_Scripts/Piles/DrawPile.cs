@@ -17,12 +17,14 @@ public class DrawPile : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             Transform cardTransform = transform.GetChild(transform.childCount - 1);
             PlayPileDrop.AddCardOnPile(cardTransform.gameObject, _drawedPile);
+            MovesHistory.Instance.AddMove(cardTransform.gameObject, gameObject,false);
             cardTransform.GetComponent<CardDisplay>().SetReverseVisibility(false);
             GameManager.Instance.isDrawing = true;
         }
         else
         {
             ResetDrawPile();
+            MovesHistory.Instance.AddMove(null,null,false);
         }
     }
 
@@ -38,6 +40,20 @@ public class DrawPile : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             Transform childCard = _drawedPile.transform.GetChild(_drawedPile.transform.childCount - 1);
             PlayPileDrop.AddCardOnPile(childCard.gameObject, gameObject);
             childCard.gameObject.GetComponent<CardDisplay>().SetReverseVisibility(true);
+        }
+    }
+
+    public void UndoResetDrawPile() 
+    {
+        while(transform.childCount > 0) 
+        {
+            Transform childCard = transform.GetChild(transform.childCount - 1);
+            if (!childCard.name.Contains("Card")) 
+            {
+                return;
+            }
+            PlayPileDrop.AddCardOnPile(childCard.gameObject, _drawedPile);
+            childCard.gameObject.GetComponent<CardDisplay>().SetReverseVisibility(false);
         }
     }
 }
