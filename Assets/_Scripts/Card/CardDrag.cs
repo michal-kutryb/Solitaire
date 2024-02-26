@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
     public Canvas canvas;
 
@@ -59,5 +59,26 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
                 PlayPileDrop.AddCardOnPile(gameObject, ParentBeforeDrop.gameObject);
         }
         _gameManager.isDraggingACard = false;
+
+        if (WinChecker.Instance.CheckIfWon()) 
+        {
+            GameManager.Instance.GameOver();
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.clickCount == 2)
+        {
+            if(GameManager.Instance.isDraggingACard || GameManager.Instance.isDrawing || transform.childCount != 4) 
+            {
+                return;
+            }
+            AutoMove.Instance.AutoMoveCard(gameObject);
+            if (WinChecker.Instance.CheckIfWon())
+            {
+                GameManager.Instance.GameOver();
+            }
+        }
     }
 }

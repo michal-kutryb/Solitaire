@@ -32,7 +32,7 @@ public class MovesHistory : MonoBehaviour
 
     public void UndoMove() 
     {
-        if(_moves.Count == 0) 
+        if(_moves.Count == 0 || GameManager.Instance.isDraggingACard || GameManager.Instance.isDrawing) 
         {
             return;
         }

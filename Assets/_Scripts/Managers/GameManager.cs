@@ -27,8 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (CheckIfGameWon())
         {
-            isGameOver = true;
-            _gameOverPanel.SetActive(true);
+            GameOver();
         }
     }
 
@@ -41,5 +40,11 @@ public class GameManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void GameOver() 
+    {
+        isGameOver = true;
+        _gameOverPanel.SetActive(true);
     }
 }
