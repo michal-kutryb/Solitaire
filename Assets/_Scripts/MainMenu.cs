@@ -10,11 +10,11 @@ public class MainMenu : MonoBehaviour
     {
         if(Application.platform == RuntimePlatform.Android) 
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(4);
         }
         else
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(3);
         }
     }
 
