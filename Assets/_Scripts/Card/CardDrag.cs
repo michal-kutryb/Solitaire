@@ -74,7 +74,7 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
         if (Mathf.Abs(currentTimeClick - _lastTimeClick) < 0.75f)
         {
-            if (GameManager.Instance.isDraggingACard || GameManager.Instance.isDrawing || transform.childCount != 4)
+            if (GameManager.Instance.isDraggingACard || GameManager.Instance.isDrawing || transform.childCount != 5)
             {
                 return;
             }

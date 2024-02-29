@@ -9,10 +9,12 @@ public class CardDisplay : MonoBehaviour
     private CardInfo _cardInfo;
     public GameObject CardReverse { get; private set; }
     [SerializeField] private Sprite[] _suitSprites;
+    [SerializeField] private Sprite[] _catSprites;
 
     [SerializeField] private TextMeshProUGUI _valueText;
     [SerializeField] private Image _suitBigImage;
     [SerializeField] private Image _suitSmallImage;
+    [SerializeField] private Image _catImage;
 
     private void Awake()
     {
@@ -24,8 +26,18 @@ public class CardDisplay : MonoBehaviour
     {
         _valueText.SetText(GetValueSign(_cardInfo.Card.Value).ToString());
         Sprite suitSprite = _suitSprites[(int)_cardInfo.Card.Suit];
-        _suitBigImage.sprite = suitSprite;
+
         _suitSmallImage.sprite = suitSprite;
+        if ((int)_cardInfo.Card.Value >= 10) 
+        {
+            _suitBigImage.gameObject.SetActive(false);
+            _catImage.gameObject.SetActive(true);
+            _catImage.sprite = _catSprites[(int)_cardInfo.Card.Value - 10];
+        }
+        else 
+        {
+            _suitBigImage.sprite = suitSprite;
+        }
 
         if (_cardInfo.Card.Suit.Equals(CardSuit.Hearts) || _cardInfo.Card.Suit.Equals(CardSuit.Diamonds))
         {

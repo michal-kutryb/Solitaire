@@ -20,7 +20,7 @@ public class FinishPileDrop : MonoBehaviour, IDropHandler
             isParentReversed = true;
         }
 
-        if (!droppedCardInfo.Card.Suit.Equals(PileSuit) || !((int) droppedCardInfo.Card.Value == pileSize) || droppedCard.transform.childCount > 4)
+        if (!droppedCardInfo.Card.Suit.Equals(PileSuit) || !((int) droppedCardInfo.Card.Value == pileSize) || droppedCard.transform.childCount > 5)
         {
             return;
         }

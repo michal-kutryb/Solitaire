@@ -15,4 +15,12 @@ public class InputManager : MonoBehaviour
             }
         }
     }
+
+    public void ShowPausePanel() 
+    {
+        if (!GameManager.Instance.isDraggingACard)
+        {
+            PausePanel.SetActive(true);
+        }
+    }
 }
